@@ -1,24 +1,257 @@
-# 💫 About Me:
-🔭 I’m currently working on<br>Building cool projects and turning ideas into real-world applications.<br><br>👯 I’m looking to collaborate on<br>Open-source projects, innovative ideas, and anything that helps me learn and grow.<br><br>🤝 I’m looking for help with<br>Writing cleaner code, improving my software architecture skills, and contributing to larger open-source projects.<br><br>🌱 I’m currently learning<br>New technologies, better development practices, and exploring modern approaches to software development.<br><br>💬 Ask me about<br>Programming, software development, my projects, or anything tech-related.<br><br>⚡ Fun fact<br>I love turning random ideas into projects just to see if I can make them work. <br><br>🚀 and more
+# 👋 Hi, I'm Iliya Haddad
 
+### Software & Systems Developer • Embedded & Low-Level Programming • Open Source
 
-# 💻 Tech Stack:
-![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![AssemblyScript](https://img.shields.io/badge/assembly%20script-%23000000.svg?style=for-the-badge&logo=assemblyscript&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white) ![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![Qt](https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white) ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white) ![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=for-the-badge&logo=WordPress&logoColor=white) ![Xamarin](https://img.shields.io/badge/Xamarin-3199DC?style=for-the-badge&logo=xamarin&logoColor=white) ![Nx](https://img.shields.io/badge/nx-143055?style=for-the-badge&logo=nx&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white) ![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Sentry](https://img.shields.io/badge/sentry-%23362D59.svg?style=for-the-badge&logo=sentry&logoColor=white) ![Cisco](https://img.shields.io/badge/cisco-%23049fd9.svg?style=for-the-badge&logo=cisco&logoColor=black) ![TOR](https://img.shields.io/badge/tor-%237E4798.svg?style=for-the-badge&logo=tor-project&logoColor=white) ![Ubiquiti](https://img.shields.io/badge/ubiquiti-%230559C9.svg?style=for-the-badge&logo=ubiquiti&logoColor=white) ![Xbox](https://img.shields.io/badge/xbox-%23107C10.svg?style=for-the-badge&logo=xbox&logoColor=white) ![nVIDIA](https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white) ![AMD](https://img.shields.io/badge/AMD-%23000000.svg?style=for-the-badge&logo=amd&logoColor=white) ![Epic Games](https://img.shields.io/badge/epicgames-%23313131.svg?style=for-the-badge&logo=epicgames&logoColor=white) ![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.shion.dev/api?username=iliyahaddad&theme=discord_old_blurple&hide_border=false&include_all_commits=true&count_private=true)<br/>
-![](https://streak-stats.demolab.com/?user=iliyahaddad&theme=discord_old_blurple&hide_border=false)<br/>
-![](https://github-readme-stats.shion.dev/api/top-langs/?username=iliyahaddad&theme=discord_old_blurple&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
+I build software, experiment with hardware, investigate legacy technologies, and turn unusual ideas into working projects.
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=iliyahaddad&theme=blue_navy&no-frame=false&no-bg=true&margin-w=4)
+My work spans from **C#/.NET and business applications** to **embedded systems, Assembly, networking, Linux infrastructure, legacy software reconstruction, and low-level Windows/GPU driver research**.
 
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
-
-### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=iliyahaddad&limit=5&theme=dark&combine_all_yearly_contributions=true)
+I enjoy projects where the answer isn't obvious — researching the problem, building a prototype, testing the limits, and documenting what I discover.
 
 ---
-[![](https://komarev.com/ghpvc/?username=iliyahaddad&icon=0&color=0)](https://visitcount.itsvg.in)
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+## 🚀 What I Work On
+
+🖥️ **Software Development**  
+C#, .NET, ASP.NET Core, MVC, Blazor, Python and database-driven applications.
+
+🔧 **Embedded & Low-Level Development**  
+PIC microcontrollers, Assembly, UART, serial communication, firmware and hardware interfaces.
+
+🖥️ **Windows & GPU Research**  
+Windows driver architecture, WDDM, AMD/ATI Radeon hardware and low-level graphics research.
+
+🌐 **Networking & Infrastructure**  
+MikroTik, Cisco, firewalls, IPS, gateways, Linux and network security.
+
+💾 **Legacy Software & Preservation**  
+Reconstructing, studying and modernizing older software and technologies.
+
+🤖 **Local AI & Automation**  
+Experimenting with local AI assistants, automation, memory systems and smart-home infrastructure.
+
+---
+
+## 🔬 Current Projects
+
+### 🖥️ WDDM 2.0 Driver for ATI/AMD Radeon HD 5000
+
+Research and implementation of a WDDM 2.0 kernel-mode display driver for legacy ATI/AMD Radeon hardware, with a current focus on the **Mobility Radeon HD 5730 / Madison / Juniper / Evergreen** architecture.
+
+Exploring:
+
+- Windows Display Driver Model
+- Kernel Mode Drivers
+- GPU memory management
+- Allocation Lists
+- Patch Location Lists
+- Command submission
+- Ring buffers
+- Fences
+- Interrupts
+- Radeon Evergreen architecture
+- Legacy hardware compatibility
+
+---
+
+### 🌐 RouterOS 7 IPS
+
+A defensive firewall / lightweight IPS project for **MikroTik RouterOS 7**.
+
+The project explores how network-level defensive capabilities can be implemented directly within RouterOS using scripting and firewall infrastructure.
+
+---
+
+### 🇬🇧 UK Company House Filing
+
+A Python-based application for preparing UK company accounts and Companies House filing workflows.
+
+---
+
+### 📡 Universal Infrared Receiver
+
+An embedded project for building a reusable infrared receiver with dual communication modes, including serial/USB-oriented communication and microcontroller firmware.
+
+---
+
+### 💿 Creative QuickCD — Open-Source Reconstruction
+
+An open-source reconstruction and preservation project focused on understanding and rebuilding legacy software.
+
+---
+
+## 🧠 Areas of Interest
+
+```text
+Software Engineering
+├── C#
+├── .NET
+├── ASP.NET Core
+├── MVC
+├── Blazor
+└── Python
+
+Low-Level & Embedded
+├── C / C++
+├── Assembly
+├── PIC
+├── UART
+├── Serial Communication
+└── Firmware
+
+Systems
+├── Windows
+├── WDDM
+├── GPU Architecture
+├── Linux
+└── Hardware Research
+
+Networking
+├── MikroTik
+├── Cisco
+├── Firewalls
+├── IPS
+├── MQTT
+└── Network Infrastructure
+
+Open Source
+├── Legacy Software Reconstruction
+├── Hardware Research
+├── Technical Documentation
+└── Experimental Projects
+```
+
+---
+
+## 💻 Core Technologies
+
+### Languages
+
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Assembly](https://img.shields.io/badge/Assembly-525252?style=for-the-badge&logo=assemblyscript&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+
+### .NET & Web
+
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Blazor](https://img.shields.io/badge/Blazor-512BD4?style=for-the-badge&logo=blazor&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+
+### Embedded & Hardware
+
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
+![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white)
+![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=white)
+
+### Networking & Infrastructure
+
+![MikroTik](https://img.shields.io/badge/MikroTik-293239?style=for-the-badge)
+![Cisco](https://img.shields.io/badge/Cisco-049FD9?style=for-the-badge&logo=cisco&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![MQTT](https://img.shields.io/badge/MQTT-660066?style=for-the-badge&logo=mqtt&logoColor=white)
+
+### Databases & Tools
+
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+
+---
+
+## 🛠️ My Approach
+
+```text
+💡 Idea
+   ↓
+🔬 Research
+   ↓
+🧪 Prototype
+   ↓
+💻 Implementation
+   ↓
+🔧 Test & Debug
+   ↓
+📚 Document
+   ↓
+🚀 Open Source
+```
+
+I like taking ideas that start with:
+
+> **"Can this actually be done?"**
+
+and turning them into:
+
+> **"Let's build it and find out."**
+
+---
+
+## 📊 GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.shion.dev/api?username=iliyahaddad&theme=discord_old_blurple&hide_border=false&include_all_commits=true&count_private=true)
+
+![GitHub Streak](https://streak-stats.demolab.com/?user=iliyahaddad&theme=discord_old_blurple&hide_border=false)
+
+![Top Languages](https://github-readme-stats.shion.dev/api/top-langs/?username=iliyahaddad&theme=discord_old_blurple&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
+
+---
+
+## 🏆 GitHub Trophies
+
+![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=iliyahaddad&theme=blue_navy&no-frame=false&no-bg=true&margin-w=4)
+
+---
+
+## 💭 Engineering Philosophy
+
+> **Don't just use technology. Understand how it works.**
+
+Old hardware, legacy software, forgotten protocols and outdated systems are not necessarily useless.
+
+Sometimes they are simply waiting for someone curious enough to understand them.
+
+---
+
+## ⚡ Fun Fact
+
+I have a tendency to turn:
+
+**"I wonder if this is possible..."**
+
+into:
+
+**"Let's build it."** 😄
+
+---
+
+## 🤝 Open Source & Collaboration
+
+I'm interested in collaborating on projects involving:
+
+- Open-source software
+- Low-level programming
+- Embedded systems
+- Driver development
+- .NET applications
+- Networking & infrastructure
+- Legacy software preservation
+- Hardware research
+- Experimental engineering
+
+If it's technically interesting, challenging, or a little unusual...
+
+**I'm probably interested. 🚀**
+
+---
+
+⭐ Explore my repositories and follow the experiments.
+
+**— Iliya Haddad**
