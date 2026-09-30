@@ -1,4 +1,4 @@
-# 👋 Hi, I'm Iliya Haddad
+# 👋 Hi, I'm Virtual Boy
 
 ### Software & Systems Developer • Embedded & Low-Level Programming • Open Source
 
@@ -254,4 +254,4 @@ If it's technically interesting, challenging, or a little unusual...
 
 ⭐ Explore my repositories and follow the experiments.
 
-**— Iliya Haddad**
+**— Virtual Boy**
