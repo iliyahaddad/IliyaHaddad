@@ -12,12 +12,12 @@ I enjoy projects where software meets the underlying system.
 ┌─────────────────────────────────────────────────────────────┐
 │                        ILIYA HADDAD                         │
 │                                                             │
-│   SOFTWARE  ─────── SYSTEMS ─────── HARDWARE               │
+│   SOFTWARE  ─────── SYSTEMS ─────── HARDWARE                │
 │       │                  │                 │                │
-│     .NET              Windows            PIC / AVR           │
-│     Python            WDDM               USB / IR            │
-│     Django            Linux              UART                │
-│     React             ConPTY             Legacy              │
+│     .NET              Windows            PIC / AVR          │
+│     Python            WDDM               USB / IR           │
+│     Django            Linux              UART               │
+│     React             ConPTY             Legacy             │
 │                                                             │
 │   NETWORKING ─────── SECURITY ─────── INFRASTRUCTURE        │
 └─────────────────────────────────────────────────────────────┘
@@ -120,7 +120,7 @@ A dual-mode infrared receiver designed around legacy PC serial communication and
                  ┌─────────────┐
 Legacy COM ─────►│             │
                  │   ATtiny85  │────► IR
-USB / V-USB ───►│             │
+USB / V-USB ────►│             │
                  └─────────────┘
 ```
 
@@ -276,7 +276,7 @@ Call Completion on Busy Subscriber for Issabel/Asterisk environments.
 | 🏢 [UK Company House Filing](https://github.com/iliyahaddad/UK-Company-House-Filing) | Python · FastAPI · iXBRL |
 | 💳 [WordPress Card Transfer Gateway](https://github.com/iliyahaddad/Wordpress-Card-Transfer-Gateway) | PHP · WordPress · WooCommerce |
 | 🤖 [VirtualBot](https://github.com/iliyahaddad/VirtualBot) | JavaScript · Discord |
-| 🔐 [VPN-UI](https://github.com/iliyahaddad/VPN-UI) | VPN · Linux · Xray / 3X-UI |
+| 🔐 [MQTT Magic Mirror](https://github.com/iliyahaddad/MQTT-Magic-Mirror) | MQTT · Home Assistant · ESP32 / Magic Mirror |
 
 ---
 
