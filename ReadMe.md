@@ -375,25 +375,20 @@ The interesting problems are usually somewhere between these layers.
 
 <p align="center">
   <a href="https://github.com/iliyahaddad">
-    <img src="https://github-readme-stats.vercel.app/api?username=iliyahaddad&show_icons=true&hide_border=true&rank_icon=github" height="170">
+    <img src="https://github-readme-stats.vercel.app/api?username=iliyahaddad&show_icons=true&hide_border=true&rank_icon=github" alt="iliyahaddad" height="170">
   </a>
   <a href="https://github.com/iliyahaddad">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=iliyahaddad&layout=compact&hide_border=true" height="170">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=iliyahaddad&layout=compact&hide_border=true" alt="iliyahaddad" height="170">
   </a>
+  <a href="https://github.com/iliyahaddad">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=iliyahaddad&theme=black-ice" alt="iliyahaddad" height="170">
+  </a>
+  <a href="https://github.com/iliyahaddad">
+    <img alt="iliyahaddad's Activity Graph" src="https://activity-graph.herokuapp.com/graph?username=iliyahaddad&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" /></a>        
 </p>
 
 ---
 
-
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=iliyahaddad&theme=black-ice"
-    alt="iliyahaddad" /></p>
-
-<br />
-
-<a href="https://github.com/iliyahaddad"><img alt="iliyahaddad's Activity Graph"
-    src="https://activity-graph.herokuapp.com/graph?username=iliyahaddad&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" /></a>
-
----
 # 📫 Find Me
 
 **GitHub:** [github.com/iliyahaddad](https://github.com/iliyahaddad)
