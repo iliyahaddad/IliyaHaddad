@@ -383,7 +383,25 @@ The interesting problems are usually somewhere between these layers.
 </p>
 
 ---
+## 📊 Github Stats <img align="right" src="https://img.shields.io/github/stars/iliyahaddad?label=Stars&style=social" alt="GitHub Badge"> <a href="https://github.com/iliyahaddad?tab=followers"><img align="right" src="https://img.shields.io/github/followers/iliyahaddad?label=Followers&style=social" alt="GitHub Badge"></a> <a href="https://github.com/iliyahaddad">  <img align="right" src="https://komarev.com/ghpvc/?username=iliyahaddad"></a>
 
+<p>
+  <img align="right"
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=iliyahaddad&langs_count=8&theme=react" />
+</p>
+
+<a href="https://github.com/iliyahaddad"><img alt="iliyahaddad's Github Stats"
+    src="https://github-readme-stats.vercel.app/api?username=iliyahaddad&show_icons=true&count_private=true&theme=react&bg_color=151515" /></a>
+
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=iliyahaddad&theme=black-ice"
+    alt="iliyahaddad" /></p>
+
+<br />
+
+<a href="https://github.com/iliyahaddad"><img alt="iliyahaddad's Activity Graph"
+    src="https://activity-graph.herokuapp.com/graph?username=iliyahaddad&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" /></a>
+
+---
 # 📫 Find Me
 
 **GitHub:** [github.com/iliyahaddad](https://github.com/iliyahaddad)
