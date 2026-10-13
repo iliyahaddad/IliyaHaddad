@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GitHub contribution activity</title>
+  <style>
+    :root { color-scheme: dark; --bg:#070a0f; --panel:#0d1117; --line:#21262d; --line-2:#30363d; --text:#f0f6fc; --muted:#8b949e; --green:#39d353; --blue:#58a6ff; }
+    * { box-sizing: border-box; }
+    html, body { margin:0; min-height:100%; }
+    body { color:var(--text); background:radial-gradient(circle at 18% -10%, rgba(57,211,83,.10), transparent 32rem), radial-gradient(circle at 84% 0%, rgba(88,166,255,.08), transparent 30rem), #070a0f; font:14px/1.5 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1240px, calc(100vw - 28px)); margin:0 auto; padding:34px 0 48px; }
+    .shell { border:1px solid rgba(48,54,61,.82); border-radius:24px; background:rgba(13,17,23,.90); box-shadow:0 30px 100px rgba(0,0,0,.38); overflow:hidden; }
+    .head { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; padding:24px 26px 18px; border-bottom:1px solid rgba(48,54,61,.66); }
+    .eyebrow { margin:0 0 6px; color:#7ee787; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(24px,3.3vw,38px); line-height:1.08; letter-spacing:-.04em; }
+    .sub { margin:8px 0 0; color:var(--muted); max-width:760px; }
+    .controls { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .switch { display:inline-flex; gap:4px; border:1px solid var(--line-2); border-radius:999px; padding:4px; background:#090d13; }
+    button { border:0; border-radius:999px; background:transparent; color:var(--muted); padding:7px 12px; cursor:pointer; font:700 12px/1 ui-sans-serif,system-ui; }
+    button:hover { color:var(--text); }
+    button[aria-pressed="true"] { color:#d8ffe0; background:rgba(57,211,83,.13); box-shadow:inset 0 0 0 1px rgba(57,211,83,.24); }
+    button:focus-visible { outline:2px solid var(--green); outline-offset:2px; }
+    .stamp { border:1px solid var(--line-2); border-radius:999px; padding:7px 11px; color:var(--muted); font-size:11px; white-space:nowrap; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border-bottom:1px solid var(--line); }
+    .stat { background:#0d1117; padding:15px 18px; min-height:78px; }
+    .stat span { display:block; color:var(--muted); font-size:11px; }
+    .stat strong { display:block; margin-top:5px; font-size:20px; letter-spacing:-.03em; }
+    .chart-wrap { position:relative; padding:18px; background:linear-gradient(180deg,#0d1117,#0a0e14); overflow-x:auto; overscroll-behavior-x:contain; }
+    #chart { width:100%; height:auto; min-height:300px; display:block; border-radius:18px; }
+    .foot { display:flex; justify-content:space-between; gap:18px; align-items:center; padding:14px 24px 18px; color:var(--muted); font-size:12px; border-top:1px solid rgba(48,54,61,.55); }
+    .legend { display:flex; gap:16px; flex-wrap:wrap; }
+    .legend span { display:inline-flex; align-items:center; gap:7px; }
+    .swatch { width:16px; height:9px; background:var(--green); border-radius:2px; }
+    .swatch.trend { width:25px; height:0; background:transparent; border-top:2px solid var(--blue); border-radius:999px; opacity:.94; }
+    .scroll-hint { display:none; margin:0; padding:10px 14px 0; color:var(--muted); font-size:12px; }
+    .chart-wrap:focus-visible { outline:2px solid var(--blue); outline-offset:-3px; }
+    .tooltip { position:fixed; display:none; pointer-events:none; transform:translate(-50%,-118%); z-index:10; min-width:190px; padding:11px 12px; border:1px solid var(--line-2); border-radius:13px; background:rgba(5,8,13,.96); box-shadow:0 18px 60px rgba(0,0,0,.55); }
+    .tooltip strong { display:block; margin-bottom:7px; }
+    .tip-row { display:flex; justify-content:space-between; gap:18px; color:var(--muted); margin-top:4px; font-size:12px; }
+    .tip-row b { color:var(--text); }
+    @media(max-width:820px){ .head{display:block}.controls{justify-content:flex-start;margin-top:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot{display:block}.legend{margin-bottom:8px} #chart{min-width:1120px;min-height:0} .scroll-hint{display:block} }
+    @media(max-width:520px){ main{width:min(100vw - 16px,1240px);padding-top:8px}.shell{border-radius:18px}.head{padding:20px 18px 16px}.stats{grid-template-columns:1fr 1fr}.stat{padding:13px}.chart-wrap{padding:8px}.stamp{display:none} }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="shell">
+      <header class="head">
+        <div>
+          <p class="eyebrow">Deus Commit Chart</p>
+          <h1>GitHub contribution activity</h1>
+          <p class="sub">An interactive bar chart of daily GitHub contributions with a smooth 7-day trend line and selectable time windows.</p>
+        </div>
+        <div class="controls">
+          <div class="switch" role="group" aria-label="Time range">
+            <button type="button" data-range="30" aria-pressed="false">30d</button>
+            <button type="button" data-range="90" aria-pressed="false">90d</button>
+            <button type="button" data-range="365" aria-pressed="false">365d</button>
+          </div>
+          <div class="stamp" id="range-label">—</div>
+        </div>
+      </header>
+      <div class="stats">
+        <div class="stat"><span id="stat-total-label">Contributions</span><strong id="stat-total">—</strong></div>
+        <div class="stat"><span>Active days</span><strong id="stat-active">—</strong></div>
+        <div class="stat"><span>Peak day</span><strong id="stat-peak">—</strong></div>
+        <div class="stat"><span>Data freshness</span><strong id="stat-fresh">—</strong></div>
+      </div>
+      <p class="scroll-hint" id="chart-scroll-hint">Swipe sideways to view all days; the newest day is on the right.</p>
+      <div class="chart-wrap" id="chart-scroll" role="region" aria-label="Scrollable daily contribution chart" aria-describedby="chart-scroll-hint" tabindex="0">
+        <svg id="chart" viewBox="0 0 1120 410" role="img" aria-label="Contribution activity chart"></svg>
+      </div>
+      <footer class="foot">
+        <div class="legend"><span><i class="swatch"></i>Daily activity</span><span><i class="swatch trend"></i>7d trend</span></div>
+        <div><span id="privacy-note"></span> Today's count is incomplete. Range switches rebuild the SVG in-browser from embedded data without API requests.</div>
+      </footer>
+    </section>
+  </main>
+  <div class="tooltip" id="tooltip"></div>
+  <script id="chart-data" type="application/json">{"title":"GitHub contribution activity","description":"","meta":{"source":"github","repo":null,"branch":null,"author":null,"username":"iliyahaddad","schemaVersion":1,"snapshotId":"9ccf0ce8b5c9406bce792f904b253feec08bd725de868eeade10c3108e6e7b36","currentDayPartial":true,"generatedAt":"2026-10-13T19:21:55.233Z","totalCommits":182,"activeDays":18,"calendarDays":365,"startDate":"2025-10-14","endDate":"2026-10-13","defaultDays":30},"data":[{"date":"2025-10-14","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-15","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-16","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-17","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-18","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-19","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-20","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-21","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-22","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-23","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-24","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-25","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-26","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-27","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-28","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-29","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-30","commits":0,"cumulative":0,"ma7":0},{"date":"2025-10-31","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-01","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-02","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-03","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-04","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-05","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-06","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-07","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-08","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-09","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-10","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-11","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-12","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-13","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-14","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-15","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-16","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-17","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-18","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-19","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-20","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-21","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-22","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-23","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-24","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-25","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-26","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-27","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-28","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-29","commits":0,"cumulative":0,"ma7":0},{"date":"2025-11-30","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-01","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-02","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-03","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-04","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-05","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-06","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-07","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-08","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-09","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-10","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-11","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-12","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-13","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-14","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-15","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-16","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-17","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-18","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-19","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-20","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-21","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-22","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-23","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-24","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-25","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-26","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-27","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-28","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-29","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-30","commits":0,"cumulative":0,"ma7":0},{"date":"2025-12-31","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-01-31","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-02-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-03-31","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-04-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-05-31","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-06-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-07-31","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-06","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-07","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-08","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-09","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-10","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-11","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-12","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-13","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-14","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-15","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-16","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-17","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-18","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-19","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-20","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-21","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-22","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-23","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-24","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-25","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-26","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-27","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-28","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-29","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-30","commits":0,"cumulative":0,"ma7":0},{"date":"2026-08-31","commits":0,"cumulative":0,"ma7":0},{"date":"2026-09-01","commits":0,"cumulative":0,"ma7":0},{"date":"2026-09-02","commits":0,"cumulative":0,"ma7":0},{"date":"2026-09-03","commits":0,"cumulative":0,"ma7":0},{"date":"2026-09-04","commits":0,"cumulative":0,"ma7":0},{"date":"2026-09-05","commits":0,"cumulative":0,"ma7":0},{"date":"2026-09-06","commits":2,"cumulative":2,"ma7":0.29},{"date":"2026-09-07","commits":0,"cumulative":2,"ma7":0.29},{"date":"2026-09-08","commits":0,"cumulative":2,"ma7":0.29},{"date":"2026-09-09","commits":0,"cumulative":2,"ma7":0.29},{"date":"2026-09-10","commits":0,"cumulative":2,"ma7":0.29},{"date":"2026-09-11","commits":0,"cumulative":2,"ma7":0.29},{"date":"2026-09-12","commits":0,"cumulative":2,"ma7":0.29},{"date":"2026-09-13","commits":1,"cumulative":3,"ma7":0.14},{"date":"2026-09-14","commits":0,"cumulative":3,"ma7":0.14},{"date":"2026-09-15","commits":1,"cumulative":4,"ma7":0.29},{"date":"2026-09-16","commits":0,"cumulative":4,"ma7":0.29},{"date":"2026-09-17","commits":0,"cumulative":4,"ma7":0.29},{"date":"2026-09-18","commits":0,"cumulative":4,"ma7":0.29},{"date":"2026-09-19","commits":0,"cumulative":4,"ma7":0.29},{"date":"2026-09-20","commits":1,"cumulative":5,"ma7":0.29},{"date":"2026-09-21","commits":6,"cumulative":11,"ma7":1.14},{"date":"2026-09-22","commits":0,"cumulative":11,"ma7":1},{"date":"2026-09-23","commits":0,"cumulative":11,"ma7":1},{"date":"2026-09-24","commits":0,"cumulative":11,"ma7":1},{"date":"2026-09-25","commits":0,"cumulative":11,"ma7":1},{"date":"2026-09-26","commits":2,"cumulative":13,"ma7":1.29},{"date":"2026-09-27","commits":0,"cumulative":13,"ma7":1.14},{"date":"2026-09-28","commits":0,"cumulative":13,"ma7":0.29},{"date":"2026-09-29","commits":6,"cumulative":19,"ma7":1.14},{"date":"2026-09-30","commits":4,"cumulative":23,"ma7":1.71},{"date":"2026-10-01","commits":16,"cumulative":39,"ma7":4},{"date":"2026-10-02","commits":2,"cumulative":41,"ma7":4.29},{"date":"2026-10-03","commits":0,"cumulative":41,"ma7":4},{"date":"2026-10-04","commits":8,"cumulative":49,"ma7":5.14},{"date":"2026-10-05","commits":17,"cumulative":66,"ma7":7.57},{"date":"2026-10-06","commits":20,"cumulative":86,"ma7":9.57},{"date":"2026-10-07","commits":3,"cumulative":89,"ma7":9.43},{"date":"2026-10-08","commits":40,"cumulative":129,"ma7":12.86},{"date":"2026-10-09","commits":21,"cumulative":150,"ma7":15.57},{"date":"2026-10-10","commits":0,"cumulative":150,"ma7":15.57},{"date":"2026-10-11","commits":0,"cumulative":150,"ma7":14.43},{"date":"2026-10-12","commits":23,"cumulative":173,"ma7":15.29},{"date":"2026-10-13","commits":9,"cumulative":182,"ma7":13.71}],"theme":{"background":"#0d1117","panel":"#111821","border":"#30363d","grid":"#21262d","text":"#f0f6fc","muted":"#8b949e","daily":"#39d353","trend":"#58a6ff","glow":"#56d364","areaTop":"rgba(57, 211, 83, 0.24)","areaBottom":"rgba(57, 211, 83, 0.015)"},"layout":{"name":"spacious","width":1120,"height":410,"pad":{"left":70,"right":42,"top":116,"bottom":62},"titleSize":20,"metaSize":12,"labelSize":12,"dailyStroke":2.8,"trendStroke":1.75,"radius":18}}</script>
+  <script>
+  (() => {
+    const payload = JSON.parse(document.getElementById('chart-data').textContent);
+    const allData = payload.data || [];
+    const meta = payload.meta || {};
+    const activityUnit = meta.source === 'local' ? 'commits' : 'contributions';
+    const theme = payload.theme;
+    const layout = payload.layout;
+    const chart = document.getElementById('chart');
+    const tooltip = document.getElementById('tooltip');
+    const buttons = Array.from(document.querySelectorAll('[data-range]'));
+    let selectedDays = [30,90,365].includes(Number(location.hash.replace('#','').replace('d',''))) ? Number(location.hash.replace('#','').replace('d','')) : (Number(meta.defaultDays) || 90);
+    let visible = [];
+    let geometry = null;
+
+    // The browser uses exactly the same pure functions as the static SVG.
+    // No geometry/range/tick implementations are maintained independently.
+    const isoToUtcMs = function isoToUtcMs(iso) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return match ? Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) : NaN;
+};
+    const isoMs = isoToUtcMs;
+    const formatDate = function formatDate(iso, includeYear = false) {
+  const ms = isoToUtcMs(iso);
+  if (!Number.isFinite(ms)) return iso;
+  const date = new Date(ms);
+  const month = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(date);
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  return includeYear ? `${month} ${day}, ${date.getUTCFullYear()}` : `${month} ${day}`;
+};
+    const fmtDate = formatDate;
+    const fmtNum = (n) => new Intl.NumberFormat(undefined,{maximumFractionDigits:0}).format(n || 0);
+    const selectRange = function selectRange(data, days) {
+  if (!Array.isArray(data) || !data.length) return [];
+  const end = isoToUtcMs(data.at(-1).date);
+  const start = end - (days - 1) * 86400000;
+  let cumulative = 0;
+  return data
+    .filter((point) => isoToUtcMs(point.date) >= start)
+    .map((point) => {
+      cumulative += Number(point.commits) || 0;
+      return { ...point, cumulative };
+    });
+};
+    const select = (days) => selectRange(allData, days);
+    const smoothPath = function smoothPath(points, tension = 0.22) {
+  // Monotone cubic Hermite interpolation (PCHIP-like), preserving flat intervals
+  // and never overshooting neighboring samples; tension remains for compatibility.
+  if (!Array.isArray(points) || !points.length) return '';
+  const fmt = (v) => v.toFixed(2);
+  if (points.length === 1) return 'M ' + fmt(points[0].x) + ' ' + fmt(points[0].y);
+  const widths = [];
+  const slopes = [];
+  for (let i = 0; i < points.length - 1; i++) {
+    const width = points[i + 1].x - points[i].x;
+    if (!(width > 0)) throw new Error('Chart points must have increasing x coordinates');
+    widths.push(width);
+    slopes.push((points[i + 1].y - points[i].y) / width);
+  }
+  const tangents = Array(points.length).fill(0);
+  tangents[0] = slopes[0];
+  tangents[points.length - 1] = slopes[slopes.length - 1];
+  for (let i = 1; i < points.length - 1; i++) {
+    const a = slopes[i - 1], b = slopes[i];
+    if (a * b <= 0) continue;
+    const w1 = 2 * widths[i] + widths[i - 1];
+    const w2 = widths[i] + 2 * widths[i - 1];
+    tangents[i] = (w1 + w2) / (w1 / a + w2 / b);
+  }
+  let result = 'M ' + fmt(points[0].x) + ' ' + fmt(points[0].y);
+  for (let i = 0; i < widths.length; i++) {
+    const p = points[i], q = points[i + 1], h = widths[i];
+    const c1x = p.x + h / 3, c2x = q.x - h / 3;
+    const c1y = p.y + tangents[i] * h / 3, c2y = q.y - tangents[i + 1] * h / 3;
+    result += ' C ' + fmt(c1x) + ' ' + fmt(c1y) + ', ' +
+      fmt(c2x) + ' ' + fmt(c2y) + ', ' + fmt(q.x) + ' ' + fmt(q.y);
+  }
+  return result;
+};
+    const dailyBarRects = function dailyBarRects(points, baseline, plotW) {
+  // A discrete day owns one horizontal bin. Keep every bar inside the plot
+  // and cap the width so 30d is substantial while 365d stays individually legible.
+  const slot = plotW / Math.max(1, points.length);
+  const width = Math.max(0.6, Math.min(24, slot * 0.72));
+  const radius = Math.min(1.8, width / 3);
+  return points.map((point) => ({
+    x: Number((point.x - width / 2).toFixed(2)),
+    y: Number(point.y.toFixed(2)),
+    width: Number(width.toFixed(2)),
+    height: Number(Math.max(0, baseline - point.y).toFixed(2)),
+    radius: Number(radius.toFixed(2))
+  }));
+};
+    const chartGeometry = function chartGeometry(allData, days, layout) {
+  const data = selectRange(allData, days);
+  const { width, height, pad } = layout;
+  const plotW = width - pad.left - pad.right;
+  const plotH = height - pad.top - pad.bottom;
+  const rawMax = Math.max(...data.map((point) => Math.max(Number(point.commits) || 0, Number(point.ma7) || 0)), 1);
+  const maxValue = Math.max(1, rawMax * 1.14);
+  const x = (index) => pad.left + ((index + 0.5) / Math.max(1, data.length)) * plotW;
+  const y = (value) => pad.top + (1 - (Number(value) || 0) / maxValue) * plotH;
+  const baseline = pad.top + plotH;
+  const dailyPoints = data.map((point, index) => ({ x: x(index), y: y(point.commits) }));
+  const trendPoints = data.map((point, index) => ({ x: x(index), y: y(point.ma7) }));
+  const bars = dailyBarRects(dailyPoints, baseline, plotW);
+  const trendPath = smoothPath(trendPoints, 0.24);
+  return { data, plotW, plotH, maxValue, x, y, baseline, dailyPoints, trendPoints, bars, trendPath };
+};
+    const buildTicks = function buildTicks(data, x, days, layout) {
+  const ticks = Math.min(days >= 365 ? 7 : 6, data.length);
+  const labels = [];
+  for (let i = 0; i < ticks; i++) {
+    const index = Math.round(i * (data.length - 1) / Math.max(1, ticks - 1));
+    const anchor = i === 0 ? 'start' : (i === ticks - 1 ? 'end' : 'middle');
+    labels.push({
+      x: x(index),
+      text: formatDate(data[index].date, days >= 365),
+      anchor,
+      y: layout.height - Math.max(18, Math.round(layout.pad.bottom * 0.34))
+    });
+  }
+  return labels;
+};
+    const dailyTotals = function dailyTotals(points) {
+  if (!Array.isArray(points)) throw new Error('Daily totals expect data points');
+  let total=0,activeDays=0;
+  for(const point of points) {
+    const count=Number(point?.commits);
+    if(!Number.isSafeInteger(count)||count<0) throw new Error('Invalid daily activity count');
+    total+=count;
+    if(!Number.isSafeInteger(total)) throw new Error('Unsafe activity total');
+    if(count>0)activeDays++;
+  }
+  return { total, activeDays };
+};
+    const esc = (s) => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[ch]));
+
+    function buildGeometry() {
+      const g = chartGeometry(allData, selectedDays, layout);
+      return { ...g, pad: layout.pad, width: layout.width, height: layout.height };
+    }
+
+    function render() {
+      geometry = buildGeometry();
+      const g=geometry, {total,activeDays:active}=dailyTotals(visible);
+      const first=visible[0], last=visible[visible.length-1];
+      const peak=visible.reduce((best,p)=>!best||p.commits>best.commits?p:best,null);
+      const grid=[];
+      for(let i=0;i<=3;i++){
+        const yy=g.pad.top+i*g.plotH/3, value=Math.round(g.maxValue*(1-i/3));
+        grid.push('<line x1="'+g.pad.left+'" y1="'+yy.toFixed(2)+'" x2="'+(g.width-g.pad.right)+'" y2="'+yy.toFixed(2)+'" stroke="'+theme.grid+'" stroke-width="1" opacity="'+(i===3?'.9':'.52')+'"/>');
+        grid.push('<text x="'+(g.pad.left-14)+'" y="'+(yy+4).toFixed(2)+'" fill="'+theme.muted+'" font-size="'+layout.labelSize+'" text-anchor="end" opacity=".82">'+value+'</text>');
+      }
+      const labels = buildTicks(visible, g.x, selectedDays, layout).map(tick =>
+        '<text x="'+tick.x.toFixed(2)+'" y="'+tick.y+'" fill="'+theme.muted+'" font-size="'+layout.labelSize+'" text-anchor="'+tick.anchor+'" opacity=".86">'+esc(tick.text)+'</text>');
+      const bars=g.bars.map((bar,i)=>bar.height>0?'<rect data-series="daily" x="'+bar.x+'" y="'+bar.y+'" width="'+bar.width+'" height="'+bar.height+'" rx="'+bar.radius+'" fill="'+(i===g.bars.length-1&&meta.currentDayPartial?theme.glow:theme.daily)+'" opacity="'+(i===g.bars.length-1?'1':'.82')+'"/>':'').join('');
+      chart.innerHTML = '<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+theme.panel+'" stop-opacity=".72"/><stop offset="1" stop-color="'+theme.background+'"/></linearGradient></defs>'+
+        '<rect x=".5" y=".5" width="'+(g.width-1)+'" height="'+(g.height-1)+'" rx="'+layout.radius+'" fill="url(#bg)" stroke="'+theme.border+'"/>'+
+        '<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">'+
+        '<text x="'+g.pad.left+'" y="34" fill="'+theme.text+'" font-size="'+layout.titleSize+'" font-weight="700">'+esc(payload.title)+'</text>'+
+        '<text x="'+g.pad.left+'" y="58" fill="'+theme.muted+'" font-size="'+layout.metaSize+'">'+esc((meta.source==='github'?'@'+(meta.username||''):((meta.repo||'repository')+' · '+(meta.branch||'ref'))))+' · '+esc(first&&last?(fmtDate(first.date,true)+' → '+fmtDate(last.date,true)):(selectedDays+'d'))+'</text>'+
+        '<text x="'+g.pad.left+'" y="78" fill="'+theme.muted+'" font-size="'+layout.metaSize+'">'+selectedDays+' days · '+fmtNum(total)+' '+activityUnit+' · '+active+' active days'+(peak?' · peak '+peak.commits:'')+'</text>'+
+        '<g transform="translate('+(g.width-g.pad.right-182)+',30)" font-size="'+layout.metaSize+'" fill="'+theme.muted+'"><rect x="3" y="-5" width="17" height="8" rx="2" fill="'+theme.daily+'"/><text x="33" y="4">Daily</text><line x1="92" y1="0" x2="117" y2="0" stroke="'+theme.trend+'" stroke-width="2" stroke-linecap="round" opacity=".92"/><text x="125" y="4">7d trend</text></g>'+
+        grid.join('')+'<g data-chart-series="daily-bars">'+bars+'</g>'+(g.trendPath?'<path data-series="trend" d="'+g.trendPath+'" fill="none" stroke="'+theme.trend+'" stroke-width="'+Math.max(2,layout.trendStroke)+'" stroke-linejoin="round" stroke-linecap="round" opacity=".94"/>':'')+labels.join('')+'</g>';
+      document.getElementById('stat-total-label').textContent=meta.source==='local'?'Commits':'Contributions';
+      document.getElementById('stat-total').textContent=fmtNum(total);
+      document.getElementById('stat-active').textContent=active+' / '+visible.length;
+      document.getElementById('stat-peak').textContent=peak?(peak.commits+' · '+fmtDate(peak.date,false)):'—';
+      document.getElementById('stat-fresh').textContent=meta.generatedAt?new Intl.RelativeTimeFormat(undefined,{numeric:'auto'}).format(-Math.max(0,Math.round((Date.now()-new Date(meta.generatedAt).getTime())/3600000)),'hour'):'embedded';
+      document.getElementById('range-label').textContent=first&&last?(fmtDate(first.date,true)+' → '+fmtDate(last.date,true)):'—';
+      const privacy=document.getElementById('privacy-note');
+      if (privacy) {
+        privacy.textContent=meta.source==='github'
+          ? 'Daily aggregates follow GitHub token visibility and account settings; no private contribution breakdown is published.'
+          : 'Local Git activity source.';
+      }
+    }
+
+    function applyRange(days) {
+      selectedDays=days;
+      visible=select(days);
+      buttons.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.range)===days)));
+      history.replaceState(null,'','#'+days+'d');
+      tooltip.style.display='none';
+      render();
+      // Keep the newest observations initially visible in a narrow, scrollable chart.
+      if (typeof window !== 'undefined' && window.innerWidth <= 820) {
+        const scroller=document.getElementById('chart-scroll');
+        if (scroller) scroller.scrollLeft=scroller.scrollWidth;
+      }
+    }
+
+    chart.addEventListener('pointermove',(evt)=>{
+      if(!visible.length||!geometry)return;
+      const rect=chart.getBoundingClientRect();
+      const svgX=(evt.clientX-rect.left)/rect.width*layout.width;
+      const ratio=(svgX-layout.pad.left)/Math.max(1,geometry.plotW);
+      const idx=Math.max(0,Math.min(visible.length-1,Math.floor(ratio*visible.length)));
+      const p=visible[idx];
+      tooltip.style.display='block'; tooltip.style.left=evt.clientX+'px'; tooltip.style.top=evt.clientY+'px';
+      tooltip.innerHTML='<strong>'+fmtDate(p.date,true)+'</strong><div class="tip-row"><span>Daily</span><b>'+fmtNum(p.commits)+'</b></div><div class="tip-row"><span>7d trend</span><b>'+Number(p.ma7).toFixed(2)+'</b></div>';
+    });
+    chart.addEventListener('pointerleave',()=>{tooltip.style.display='none';});
+    buttons.forEach(b=>b.addEventListener('click',()=>applyRange(Number(b.dataset.range))));
+    applyRange(selectedDays);
+  })();
+  </script>
+</body>
+</html>
