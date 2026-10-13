@@ -1,0 +1,65 @@
+# Copy to USERNAME/USERNAME/.github/workflows/activity-chart.yml.
+# Manual-only by default. To refresh automatically, uncomment schedule.
+# Standard runners are free in public repositories; private repo jobs may use quota.
+name: Update contribution chart
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '17 4 * * *'  # Optional: daily at 04:17 UTC
+
+permissions:
+  contents: write # Required only because this example also publishes its SVGs.
+
+concurrency:
+  group: profile-activity-assets
+  cancel-in-progress: false
+
+jobs:
+  chart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Generate and independently validate charts
+        uses: dturovskiy/deus-commit-chart@v1.5.3
+        with:
+          source: github
+          username: ${{ github.repository_owner }}
+          token: ${{ secrets.DEUS_COMMIT_CHART_TOKEN || github.token }}
+          default-days: '30'
+          ranges: '30,90,365'
+          layout: spacious
+          output-dir: activity-dist
+
+      - name: Publish to a dedicated branch (fast-forward only)
+        shell: bash
+        env:
+          TARGET_BRANCH: activity-assets
+        run: |
+          set -euo pipefail
+          parent="$(mktemp -d)"
+          worktree="$parent/working"
+          trap 'git worktree remove -f "$worktree" >/dev/null 2>&1 || true; rm -rf "$parent"' EXIT
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin "$TARGET_BRANCH" >/dev/null; then
+            git fetch --no-tags origin "$TARGET_BRANCH"
+            git worktree add --detach "$worktree" FETCH_HEAD
+          else
+            git worktree add --detach "$worktree" HEAD
+            git -C "$worktree" switch --orphan "$TARGET_BRANCH"
+          fi
+
+          # Reserve activity-assets for charts: other files there are replaced.
+          git -C "$worktree" rm -r --ignore-unmatch . >/dev/null
+          find "$worktree" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$GITHUB_WORKSPACE/activity-dist/." "$worktree/"
+          git -C "$worktree" add -A
+          if git -C "$worktree" diff --cached --quiet; then
+            echo "No changes in published assets."
+            exit 0
+          fi
+          git -C "$worktree" commit -m "chore: refresh contribution chart"
+          git -C "$worktree" push origin "HEAD:refs/heads/$TARGET_BRANCH"
