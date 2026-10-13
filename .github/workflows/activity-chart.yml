@@ -30,6 +30,7 @@ jobs:
           token: ${{ secrets.DEUS_COMMIT_CHART_TOKEN || github.token }}
           default-days: '30'
           ranges: '30,90,365'
+          theme: github-light
           layout: spacious
           output-dir: activity-dist
 
