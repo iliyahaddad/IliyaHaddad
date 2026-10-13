@@ -385,10 +385,6 @@ The interesting problems are usually somewhere between these layers.
 ---
 
 
-
-<a href="https://github.com/iliyahaddad"><img alt="iliyahaddad's Github Stats"
-    src="https://github-readme-stats.vercel.app/api?username=iliyahaddad&show_icons=true&count_private=true&theme=react&bg_color=151515" /></a>
-
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=iliyahaddad&theme=black-ice"
     alt="iliyahaddad" /></p>
 
