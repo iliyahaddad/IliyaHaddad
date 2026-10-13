@@ -387,7 +387,8 @@ The interesting problems are usually somewhere between these layers.
     <img alt="iliyahaddad's Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=iliyahaddad&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" /></a>        
 </p>
 
-[![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=iliyahaddad)](https://github.com/iliyahaddad/github-readme-activity-graph)
+[![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Ashutosh00710&theme=dracula)](https://github.com/ashutosh00710/github-readme-activity-graph)
+
 ---
 
 # 📫 Find Me
