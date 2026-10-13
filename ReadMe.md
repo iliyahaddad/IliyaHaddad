@@ -384,7 +384,7 @@ The interesting problems are usually somewhere between these layers.
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=iliyahaddad&theme=meta-light" alt="iliyahaddad" height="170">
   </a>
   <a href="https://github.com/iliyahaddad">
-    <img alt="iliyahaddad's Activity Graph" src="https://activity-graph.herokuapp.com/graph?username=iliyahaddad&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" /></a>        
+    <img alt="iliyahaddad's Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=iliyahaddad&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&hide_border=true" /></a>        
 </p>
 
 ---
