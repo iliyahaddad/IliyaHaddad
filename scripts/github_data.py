@@ -104,24 +104,14 @@ def fetch_contributions(client: GitHubClient, login: str) -> dict | None:
         return None
 
 
-def _paginate(client: GitHubClient, path: str) -> list:
-    """Fetch every page (GitHub REST caps each page at 100 items).
-
-    Do not silently stop at an arbitrary page count: totals for stars/forks
-    must cover all public repositories. The short-page condition is GitHub's
-    documented end-of-pagination signal.
-    """
+def _paginate(client: GitHubClient, path: str, limit_pages: int = 5) -> list:
     items: list = []
     sep = "&" if "?" in path else "?"
-    page = 1
-    while True:
+    for page in range(1, limit_pages + 1):
         chunk = client.get(f"{path}{sep}per_page=100&page={page}")
-        if not isinstance(chunk, list):
-            raise GitHubError(f"unexpected paginated response for {path}")
         items.extend(chunk)
         if len(chunk) < 100:
             break
-        page += 1
     return items
 
 

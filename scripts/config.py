@@ -12,7 +12,7 @@ TAGLINE = "Beyond Code. Beyond Intelligence."
 FEATURED = ("BasicForge", "NexaPack", "vTPM2")
 
 WIDTH = 1200
-HEIGHT = 1160
+HEIGHT = 1090
 
 COLORS = {
     "bg": "#020806",
