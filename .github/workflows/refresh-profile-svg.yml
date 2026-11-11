@@ -1,0 +1,26 @@
+name: Refresh GitHub profile SVG
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * *'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install SVG renderer
+        run: pip install cairosvg
+      - name: Refresh embedded GitHub cards
+        run: python .github/scripts/update_profile_svg.py
+      - name: Commit refreshed SVG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add matrix-github-profile.svg
+          git diff --cached --quiet || git commit -m "chore: refresh live GitHub profile panels"
+          git push
