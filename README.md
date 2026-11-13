@@ -16,35 +16,18 @@ technology, and connecting hardware with software.
 
 ## 📡 Live GitHub Dashboard
 
-```{=html}
 <p align="center">
-```
-`<img src="assets/github-live-status.svg" alt="Iliya Haddad — Live GitHub Engineering Dashboard" width="100%">`{=html}
-```{=html}
+  <img
+    src="./matrix-github-profile.svg"
+    alt="Iliya Haddad - Matrix XMB GitHub Profile"
+    width="100%"
+  />
 </p>
-```
-```{=html}
-<p align="center">
-```
-`<sub>`{=html}Automatically refreshed GitHub profile statistics and
-engineering activity.`</sub>`{=html}
-```{=html}
-</p>
-```
 
 ------------------------------------------------------------------------
 
 ## ⚡ Engineering Focus
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="33%" valign="top">
-```
 ### 🖥️ Systems
 
 -   Windows internals
@@ -65,13 +48,6 @@ engineering activity.`</sub>`{=html}
 
 -   Software reconstruction
 
-    ```{=html}
-    </td>
-    ```
-    ```{=html}
-    <td width="33%" valign="top">
-    ```
-
 ### 🔌 Embedded & Hardware
 
 -   PIC / AVR
@@ -90,13 +66,6 @@ engineering activity.`</sub>`{=html}
 
 -   Hardware/software integration
 
-    ```{=html}
-    </td>
-    ```
-    ```{=html}
-    <td width="33%" valign="top">
-    ```
-
 ### 🌐 Networking & Infrastructure
 
 -   MikroTik RouterOS
@@ -114,16 +83,6 @@ engineering activity.`</sub>`{=html}
 -   VoIP and SIP
 
 -   Linux infrastructure
-
-    ```{=html}
-    </td>
-    ```
-    ```{=html}
-    </tr>
-    ```
-    ```{=html}
-    </table>
-    ```
 
 ------------------------------------------------------------------------
 
@@ -328,11 +287,4 @@ The interesting problems are usually somewhere between these layers.
 
 ------------------------------------------------------------------------
 
-```{=html}
-<p align="center">
-```
 ### Building software. Understanding systems. Connecting the old with the new.
-
-```{=html}
-</p>
-```
