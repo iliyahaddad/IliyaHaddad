@@ -1,5 +1,3 @@
-google-site-verification: google782d388c879ba237.html
-
 # 👋 Hi, I'm Iliya Haddad
 
 ### Systems & Software Engineer · Low-Level · Networking · Embedded · Infrastructure
