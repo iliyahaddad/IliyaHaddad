@@ -1,6 +1,4 @@
-```html
-<meta name="google-site-verification" content="SDW-gtJDmf87dUK7Mil3Bz8yVPy8K6gSbFc0o9kGqJc" />
-```
+google782d388c879ba237
 
 # 👋 Hi, I'm Iliya Haddad
 
