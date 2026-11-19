@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Iliya Haddad | GitHub Projects & Open Source</title>
+
+    <meta name="description"
+          content="Explore software development projects, open-source repositories, programming experiments, tools and technologies created by Iliya Haddad.">
+
+    <meta name="author" content="Iliya Haddad">
+
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <link rel="canonical"
+          href="https://iliyahaddad.github.io/IliyaHaddad/">
+
+    <meta property="og:title"
+          content="Iliya Haddad | GitHub Projects">
+
+    <meta property="og:description"
+          content="Explore my open-source software, programming projects and experiments.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+          content="https://iliyahaddad.github.io/IliyaHaddad/">
+
+    <meta name="theme-color" content="#0d1117">
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0d1117;
+            --panel: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #3fb950;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 60px 20px 40px;
+            text-align: center;
+            background:
+                radial-gradient(circle at top, #1f3b5b 0%, transparent 65%),
+                var(--bg);
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            color: var(--muted);
+            max-width: 700px;
+            margin: 15px auto;
+        }
+
+        .profile-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        main {
+            max-width: 1200px;
+            padding: 30px 20px;
+            margin: auto;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        #search {
+            flex: 1;
+            min-width: 220px;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--panel);
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        #stats {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        #projects {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform .2s, border-color .2s;
+        }
+
+        .project:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .project h2 {
+            margin: 0 0 10px;
+            font-size: 19px;
+            overflow-wrap: anywhere;
+        }
+
+        .description {
+            color: var(--muted);
+            font-size: 14px;
+            flex: 1;
+            overflow-wrap: anywhere;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .topic {
+            font-size: 12px;
+            color: #79c0ff;
+            background: #12263a;
+            padding: 4px 8px;
+            border-radius: 20px;
+        }
+
+        .archived {
+            color: #d29922;
+            font-size: 12px;
+        }
+
+        .status {
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 10px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 40px 15px;
+            }
+
+            main {
+                padding: 20px 12px;
+            }
+
+            #projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Iliya Haddad</h1>
+
+    <p>
+        Software developer, technology enthusiast and open-source creator.
+        Explore my projects, experiments, tools and software development work.
+    </p>
+
+    <a class="profile-link"
+       href="https://github.com/iliyahaddad"
+       target="_blank"
+       rel="noopener noreferrer">
+        View GitHub Profile →
+    </a>
+</header>
+
+<main>
+
+    <div class="toolbar">
+
+        <input
+            id="search"
+            type="search"
+            placeholder="Search projects, languages or topics..."
+            aria-label="Search GitHub projects">
+
+        <div id="stats">
+            Loading repositories...
+        </div>
+
+    </div>
+
+    <div id="projects"></div>
+
+    <div id="status" class="status">
+        Loading public GitHub repositories...
+    </div>
+
+</main>
+
+<footer>
+    <p>
+        Automatically generated from the public GitHub API.
+    </p>
+
+    <p>
+        © <span id="year"></span>
+        Iliya Haddad
+    </p>
+
+    <a href="https://github.com/iliyahaddad">
+        GitHub
+    </a>
+</footer>
+
+<script>
+
+const USERNAME = "iliyahaddad".replace(" ", ""); // ili yahaddad -> ili yahaddad without spaces
+
+const API_URL =
+    "https://api.github.com/users/iliyahaddad".replaceAll(" ", "") +
+    "/repos?per_page=100&sort=updated";
+
+const projectsContainer =
+    document.getElementById("projects");
+
+const statusElement =
+    document.getElementById("status");
+
+const searchInput =
+    document.getElementById("search");
+
+const statsElement =
+    document.getElementById("stats");
+
+let repositories = [];
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+async function loadRepositories() {
+
+    try {
+
+        let allRepos = [];
+        let page = 1;
+
+        while (true) {
+
+            const response = await fetch(
+                `https://api.github.com/users/${USERNAME}/repos?per_page=100&page=${page}&sort=updated`,
+                {
+                    headers: {
+                        "Accept": "application/vnd.github+json"
+                    }
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    `GitHub API error: ${response.status}`
+                );
+            }
+
+            const data = await response.json();
+
+            allRepos.push(...data);
+
+            if (data.length < 100) {
+                break;
+            }
+
+            page++;
+        }
+
+        repositories = allRepos
+            .filter(repo => !repo.fork)
+            .sort((a, b) =>
+                new Date(b.updated_at) -
+                new Date(a.updated_at)
+            );
+
+        renderRepositories(repositories);
+
+        statusElement.style.display = "none";
+
+    } catch (error) {
+
+        console.error(error);
+
+        statusElement.textContent =
+            "Unable to load GitHub repositories. Please try again later.";
+
+        statsElement.textContent = "";
+
+    }
+
+}
+
+
+function renderRepositories(repoList) {
+
+    projectsContainer.innerHTML = "";
+
+    statsElement.textContent =
+        `${repoList.length} projects`;
+
+    if (repoList.length === 0) {
+
+        statusElement.style.display = "block";
+
+        statusElement.textContent =
+            "No repositories found.";
+
+        return;
+    }
+
+    statusElement.style.display = "none";
+
+    repoList.forEach(repo => {
+
+        const card = document.createElement("article");
+
+        card.className = "project";
+
+        const title = document.createElement("h2");
+
+        const link = document.createElement("a");
+
+        link.href = repo.html_url;
+
+        link.target = "_blank";
+
+        link.rel = "noopener noreferrer";
+
+        link.textContent = repo.name;
+
+        title.appendChild(link);
+
+        const description = document.createElement("p");
+
+        description.className = "description";
+
+        description.textContent =
+            repo.description ||
+            "Open-source software project and development repository.";
+
+        const metadata = document.createElement("div");
+
+        metadata.className = "meta";
+
+        if (repo.language) {
+
+            const language = document.createElement("span");
+
+            language.textContent =
+                "💻 " + repo.language;
+
+            metadata.appendChild(language);
+
+        }
+
+        const stars = document.createElement("span");
+
+        stars.textContent =
+            "⭐ " + repo.stargazers_count;
+
+        metadata.appendChild(stars);
+
+        const updated = document.createElement("span");
+
+        updated.textContent =
+            "Updated " +
+            new Date(repo.updated_at).toLocaleDateString();
+
+        metadata.appendChild(updated);
+
+        if (repo.archived) {
+
+            const archived = document.createElement("span");
+
+            archived.className = "archived";
+
+            archived.textContent = "Archived";
+
+            metadata.appendChild(archived);
+
+        }
+
+        const topics = document.createElement("div");
+
+        topics.className = "topics";
+
+        (repo.topics || []).slice(0, 8).forEach(topic => {
+
+            const tag = document.createElement("span");
+
+            tag.className = "topic";
+
+            tag.textContent = topic;
+
+            topics.appendChild(tag);
+
+        });
+
+        card.appendChild(title);
+
+        card.appendChild(description);
+
+        card.appendChild(metadata);
+
+        card.appendChild(topics);
+
+        projectsContainer.appendChild(card);
+
+    });
+
+}
+
+
+searchInput.addEventListener("input", () => {
+
+    const query =
+        searchInput.value.toLowerCase().trim();
+
+    const filtered = repositories.filter(repo => {
+
+        const searchableText = [
+
+            repo.name,
+
+            repo.description || "",
+
+            repo.language || "",
+
+            ...(repo.topics || [])
+
+        ].join(" ").toLowerCase();
+
+        return searchableText.includes(query);
+
+    });
+
+    renderRepositories(filtered);
+
+});
+
+
+loadRepositories();
+
+</script>
+
+</body>
+</html>
