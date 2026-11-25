@@ -1,18 +1,14 @@
 # 👋 Hi, I'm Iliya Haddad
 
-### Systems & Software Engineer · Low-Level · Networking · Embedded · Infrastructure
+### Systems & Software Engineer · Low-Level · Networking · Embedded · Infrastructure · Compiler Engineering
 
 > **Don't just use technology. Understand how it works.**
 
-I build and investigate software across different layers of the stack
---- from microcontrollers, firmware and legacy hardware to Windows
-drivers, networking, security and modern enterprise applications.
+I build and investigate software across different layers of the stack — from microcontrollers, firmware and legacy hardware to Windows drivers, networking, security, compilers and modern enterprise applications.
 
-I enjoy projects where software meets the underlying system:
-understanding the layers beneath an abstraction, rebuilding old
-technology, and connecting hardware with software.
+I enjoy projects where software meets the underlying system: understanding the layers beneath an abstraction, rebuilding old technology, designing new programming tools, and connecting hardware with software.
 
-------------------------------------------------------------------------
+---
 
 ## 📡 Live GitHub Dashboard
 
@@ -24,132 +20,128 @@ technology, and connecting hardware with software.
   />
 </p>
 
-------------------------------------------------------------------------
+---
 
 ## ⚡ Engineering Focus
 
 ### 🖥️ Systems
 
--   Windows internals
+- Windows internals
+- Windows driver architecture
+- WDDM
+- GPU architecture
+- Kernel-mode concepts
+- Linux
+- ConPTY and terminal technologies
+- DOS / retro computing
+- Software reconstruction
 
--   Windows driver architecture
+### ⚙️ Language & Compiler Engineering
 
--   WDDM
-
--   GPU architecture
-
--   Kernel-mode concepts
-
--   Linux
-
--   ConPTY and terminal technologies
-
--   DOS / retro computing
-
--   Software reconstruction
+- Programming language design
+- Compiler architecture
+- Lexical and syntax analysis
+- Intermediate Representation (IR)
+- Semantic analysis
+- Native x64 compilation
+- LLVM and linker technologies
+- Assembly and low-level code generation
+- IDE and developer tooling
+- Visual programming environments
 
 ### 🔌 Embedded & Hardware
 
--   PIC / AVR
-
--   Assembly
-
--   Firmware development
-
--   UART and serial protocols
-
--   USB and V-USB
-
--   Infrared interfaces
-
--   Microcontrollers
-
--   Hardware/software integration
+- PIC / AVR
+- Assembly
+- Firmware development
+- UART and serial protocols
+- USB and V-USB
+- Infrared interfaces
+- Microcontrollers
+- Hardware/software integration
 
 ### 🌐 Networking & Infrastructure
 
--   MikroTik RouterOS
+- MikroTik RouterOS
+- Firewall and IPS
+- Network security
+- VPN and tunneling
+- QUIC / HTTP/3
+- Asterisk / Issabel
+- VoIP and SIP
+- Linux infrastructure
 
--   Firewall and IPS
-
--   Network security
-
--   VPN and tunneling
-
--   QUIC / HTTP/3
-
--   Asterisk / Issabel
-
--   VoIP and SIP
-
--   Linux infrastructure
-
-------------------------------------------------------------------------
+---
 
 ## ⭐ Featured Engineering Projects
 
-A selection of projects that represent my interests across systems
-engineering, networking, embedded development and application
-architecture.
+A selection of projects that represent my interests across systems engineering, programming language design, compiler development, networking, embedded development and application architecture.
+
+### ⚙️ [BasicForge](https://github.com/iliyahaddad/basicforge)
+
+**Programming Language · Compiler Engineering · C++ · Rust · LLVM · Windows x64**
+
+An independent programming language and native Windows development ecosystem inspired by the simplicity of Visual Basic.
+
+BasicForge aims to combine an expressive, beginner-friendly programming experience with modern compiler architecture, native x64 executable generation and a dedicated Integrated Development Environment.
+
+The project includes:
+
+- Custom programming language and compiler frontend
+- Lexer, parser and semantic analysis
+- Independent Intermediate Representation (IR)
+- C-based code emission and optional LLVM backend
+- Native Windows executable and library generation
+- Visual Windows Forms development
+- Dedicated IDE and language tooling
+
+**Forge Your Code. Build Native.**
 
 ### 🧠 [Virtual TPM 2.0](https://github.com/iliyahaddad/Virtual-TPM-2.0)
 
 **Windows · C/C++ · Security · TPM 2.0**
 
-Research and engineering focused on a software-based TPM 2.0
-implementation. The project explores TPM command handling and the
-software architecture required to provide TPM-like functionality.
+Research and engineering focused on a software-based TPM 2.0 implementation. The project explores TPM command handling and the software architecture required to provide TPM-like functionality.
 
 ### 🌐 [QTunnel](https://github.com/iliyahaddad/QTunnel)
 
 **Networking · Go · Tunneling**
 
-A networking project exploring tunneling and modern transport
-technologies. See the repository for its current implementation,
-supported modes and technical documentation.
+A networking project exploring tunneling and modern transport technologies. See the repository for its current implementation, supported modes and technical documentation.
 
 ### 📦 [NexaPack](https://github.com/iliyahaddad/NexaPack)
 
 **C++20 · Compression · Systems Programming**
 
-A native archive and compression project focused on software design,
-compression integration and performance-oriented implementation.
+A native archive and compression project focused on software design, compression integration and performance-oriented implementation.
 
 ### 🧩 [WDDM 2.0 Driver for ATI/AMD Radeon HD 5000 Series](https://github.com/iliyahaddad/WDDM-2.0-Driver-For-ATI-AMD-Series-Radeon-HD5000)
 
 **Windows · WDDM · Legacy AMD Radeon · GPU Architecture**
 
-Research and experimental work exploring the feasibility and
-architecture of a WDDM 2.0 display driver for legacy AMD Radeon
-hardware.
+Research and experimental work exploring the feasibility and architecture of a WDDM 2.0 display driver for legacy AMD Radeon hardware.
 
-> Research / experimental project --- not a production-ready display
-> driver.
+> Research / experimental project — not a production-ready display driver.
 
 ### 🔌 [UIR Dual-Mode COM / USB](https://github.com/iliyahaddad/UIR-Dual-Mode-COM-USB)
 
 **Embedded Systems · ATtiny85 · USB · Serial · Infrared**
 
-A dual-mode infrared receiver project designed around legacy PC serial
-communication and USB connectivity.
+A dual-mode infrared receiver project designed around legacy PC serial communication and USB connectivity.
 
 ### 🏗️ [Technical Inspection Management Platform](https://github.com/iliyahaddad/Technical-Inspection-Management-Platform)
 
 **Django · Django REST Framework · React · TypeScript · PostgreSQL**
 
-A full-stack platform for technical inspection workflows, combining a
-web API, frontend application and supporting infrastructure.
+A full-stack platform for technical inspection workflows, combining a web API, frontend application and supporting infrastructure.
 
-------------------------------------------------------------------------
+---
 
 ## 🏢 Enterprise & Application Engineering
 
 ### [Project Financial Management System](https://github.com/iliyahaddad/Project-Financial-Management-System)
 
-A project-control and financial-management system covering areas such as
-work breakdown structures, cost control, man-day management, estimates
-at completion, profitability, payment certificates, role-based access
-control and reporting.
+A project-control and financial-management system covering areas such as work breakdown structures, cost control, man-day management, estimates at completion, profitability, payment certificates, role-based access control and reporting.
 
 ### [WordPress Card Transfer Gateway](https://github.com/iliyahaddad/Wordpress-Card-Transfer-Gateway)
 
@@ -157,44 +149,31 @@ A payment-related integration project for WordPress environments.
 
 ### [UK Company House Filing](https://github.com/iliyahaddad/UK-Company-House-Filing)
 
-A software project focused on UK company filing workflows and structured
-business reporting.
+A software project focused on UK company filing workflows and structured business reporting.
 
-------------------------------------------------------------------------
+---
 
 ## 🧪 Research, Embedded & Legacy Engineering
 
-I have a particular interest in understanding, preserving and rebuilding
-older technologies --- especially where software interacts directly with
-hardware or operating-system interfaces.
+I have a particular interest in understanding, preserving and rebuilding older technologies — especially where software interacts directly with hardware or operating-system interfaces.
 
--   [Creative QuickCD](https://github.com/iliyahaddad/Creative-QuickCD)
-    --- legacy Creative software research and reconstruction.
--   [Windows 95 Style Exit for
-    DOS](https://github.com/iliyahaddad/Windows-95-Style-Exit-DOS-App)
-    --- a retro-computing experiment recreating a Windows 95-style exit
-    interface in a DOS environment.
--   [Issabel CCBS](https://github.com/iliyahaddad/Issabel-CCBS) --- Call
-    Completion on Busy Subscriber for Issabel / Asterisk environments.
--   [MQTT Magic
-    Mirror](https://github.com/iliyahaddad/MQTT-Magic-Mirror) ---
-    MQTT-based smart mirror and home-automation integration.
--   [Flipper Zero
-    Toolbox](https://github.com/iliyahaddad/Flipper-Zero-Toolbox) ---
-    tools and experiments for the Flipper Zero platform.
--   [Matrix Terminal](https://github.com/iliyahaddad/Matrix-Terminal)
-    --- a Windows terminal project with a Matrix-inspired interface and
-    a ConPTY backend.
+- [Creative QuickCD](https://github.com/iliyahaddad/Creative-QuickCD) — legacy Creative software research and reconstruction.
+- [Windows 95 Style Exit for DOS](https://github.com/iliyahaddad/Windows-95-Style-Exit-DOS-App) — a retro-computing experiment recreating a Windows 95-style exit interface in a DOS environment.
+- [Issabel CCBS](https://github.com/iliyahaddad/Issabel-CCBS) — Call Completion on Busy Subscriber for Issabel / Asterisk environments.
+- [MQTT Magic Mirror](https://github.com/iliyahaddad/MQTT-Magic-Mirror) — MQTT-based smart mirror and home-automation integration.
+- [Flipper Zero Toolbox](https://github.com/iliyahaddad/Flipper-Zero-Toolbox) — tools and experiments for the Flipper Zero platform.
+- [Matrix Terminal](https://github.com/iliyahaddad/Matrix-Terminal) — a Windows terminal project with a Matrix-inspired interface and a ConPTY backend.
 
-------------------------------------------------------------------------
+---
 
 ## 🧰 Technology Stack
 
 ### Languages
 
 ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
-![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=cplusplus&logoColor=white)
 ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=csharp&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
@@ -206,12 +185,13 @@ hardware or operating-system interfaces.
 ### Frameworks & Platforms
 
 ![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![ASP.NET
-Core](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
 ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+![LLVM](https://img.shields.io/badge/LLVM-262D3A?style=flat-square&logo=llvm&logoColor=white)
+![BasicForge](https://img.shields.io/badge/BasicForge-Native%20Compiler-1677FF?style=flat-square)
 
 ### Systems & Infrastructure
 
@@ -221,13 +201,13 @@ Core](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=flat-square&logo=do
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 ![MikroTik](https://img.shields.io/badge/MikroTik-293239?style=flat-square)
 
-------------------------------------------------------------------------
+---
 
 ## 🧠 Engineering Philosophy
 
 I like understanding what happens underneath the abstraction.
 
-``` text
+```text
 Application
     │
     ▼
@@ -245,7 +225,7 @@ Hardware
 
 And on the networking side:
 
-``` text
+```text
 Application
     │
     ▼
@@ -263,28 +243,34 @@ Infrastructure
 
 The interesting problems are usually somewhere between these layers.
 
-------------------------------------------------------------------------
+---
 
 ## 🔭 Currently Exploring
 
--   Native compiler and language engineering
--   Windows driver development and WDDM architecture
--   Legacy AMD GPU hardware
--   Embedded firmware and microcontrollers
--   USB and serial communication
--   Network security and modern tunneling protocols
--   Local AI systems
--   Operating-system and terminal technologies
--   Legacy software preservation
+- Native compiler and programming language engineering
+- BasicForge language, compiler and IDE development
+- Windows driver development and WDDM architecture
+- Legacy AMD GPU hardware
+- Embedded firmware and microcontrollers
+- USB and serial communication
+- Network security and modern tunneling protocols
+- Local AI systems
+- Operating-system and terminal technologies
+- Legacy software preservation
 
-------------------------------------------------------------------------
+---
 
 ## 📫 Find Me
 
--   **GitHub:** [github.com/iliyahaddad](https://github.com/iliyahaddad)
--   **Portfolio:** [XMB Developer
-    Portfolio](https://github.com/iliyahaddad/XMB-Developer-Portfolio)
+- **GitHub:** [github.com/iliyahaddad](https://github.com/iliyahaddad)
+- **Portfolio:** [XMB Developer Portfolio](https://github.com/iliyahaddad/XMB-Developer-Portfolio)
 
-------------------------------------------------------------------------
+---
 
-### Building software. Understanding systems. Connecting the old with the new.
+<p align="center">
+  <strong>Building software. Understanding systems. Connecting the old with the new.</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/iliyahaddad/basicforge">Explore BasicForge →</a>
+</p>
